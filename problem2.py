@@ -32,10 +32,10 @@ def map(file):
     file = file.read()
     file = re.split(r'[-[\]{{}}()*+?.,\\^$|#\s]+', file)
     print(file)
+    stopwords = {"the", "and", "of", "a", "to", "in", "is", "it"}
     for word in file:
         #add the word to the tuple list if it is not a stop word
-        stopwords = {"the", "and", "of", "a", "to", "in", "is", "it"}
-        if not re.match("[-[\]{{}}()*+?.,\\^$|#\s]", word) and word != "" and word not in stopwords:
+        if not re.match("[-[\]{{}}()*+?.,\\^$|#\s]", word) and word != "" and word.lower() not in stopwords:
             tuple_list.append({word : 1})
     
     print(tuple_list)
