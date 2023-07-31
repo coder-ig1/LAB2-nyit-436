@@ -32,22 +32,35 @@ Example Output:
 import regex as re
 def main():
     read_file = open("problem1-input.txt", "r")
-    map(read_file)
-    """  reduce()
-    write_file """
+    reduce(map(read_file))
+    return 
 
 def map(file):
-    dict = {}
+    tuple_list = []
     #create key value pairs from the input
     #key = word
     #value = 1
     file = file.read()
-    file = file.split(" ")
+    file = re.split(r'[-[\]{{}}()*+?.,\\^$|#\s]+', file)
     print(file)
     for word in file:
-        if re.match(r'\w+', word):
-            dict.update( {word : 1})
-    print(dict)
-    return dict
+        if not re.match("[-[\]{{}}()*+?.,\\^$|#\s]", word) and word != "":
+            tuple_list.append({word : 1})
+    
+    print(tuple_list)
+    return tuple_list
+def reduce(tuple_list):
+    #create a dictionary with the key being the word and the value being the count
+    #if the key is already in the dictionary, increase the count
+    #if the key is not in the dictionary, add the key and set the count to 1
+    word_count = {}
+    for tuple in tuple_list:
+        for key in tuple:
+            if key in word_count:
+                word_count[key] += 1
+            else:
+                word_count[key] = 1
+    print(word_count)
+    return word_count
 
 main()
