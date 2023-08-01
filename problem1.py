@@ -42,12 +42,10 @@ def map(file):
     #value = 1
     file = file.read()
     file = re.split(r'[-[\]{{}}()*+?.,\\^$|#\s]+', file)
-    print(file)
     for word in file:
         if not re.match("[-[\]{{}}()*+?.,\\^$|#\s]", word) and word != "":
             tuple_list.append({word : 1})
     
-    print(tuple_list)
     return tuple_list
 def reduce(tuple_list):
     #create a dictionary with the key being the word and the value being the count
@@ -60,7 +58,6 @@ def reduce(tuple_list):
                 word_count[key] += 1
             else:
                 word_count[key] = 1
-    print(word_count)
     return word_count
 
 main()

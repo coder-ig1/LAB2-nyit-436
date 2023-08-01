@@ -49,8 +49,6 @@ def map(file):
             bigrams = zip(words, words[1:])  # Form word bigrams using zip
             for bigram in bigrams:
                 tuple_list.append(bigram)
-
-    print(tuple_list)
     return tuple_list
 
 def reduce(tuple_list):
@@ -61,8 +59,6 @@ def reduce(tuple_list):
             word_count[key] += 1
         else:
             word_count[key] = 1
-
-    print(word_count)
     return word_count
 
 main()
